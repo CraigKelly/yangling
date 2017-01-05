@@ -1,0 +1,8 @@
+#######################################################################
+# Generate business file
+
+| ./business.py
+c .pyc
+c .json
+C __pycache__
+> business.csv

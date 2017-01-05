@@ -6,6 +6,7 @@ import json
 
 
 def main():
+    """Entry point."""
     pass
 
 
