@@ -1,7 +1,7 @@
 #######################################################################
 # Generate business file
 
-| ./business.py
+| ./business.py < yelp_academic_dataset_business.json > business.csv
 c .pyc
 c .json
 C __pycache__
