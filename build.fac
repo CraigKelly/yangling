@@ -1,8 +1,0 @@
-#######################################################################
-# Generate business file
-
-| ./business.py < yelp_academic_dataset_business.json > business.csv
-c .pyc
-c .json
-C __pycache__
-> business.csv
