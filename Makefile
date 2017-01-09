@@ -1,4 +1,4 @@
-all: business.csv
+all: business.csv reviews.csv
 
 clean:
 	rm -f business.csv
