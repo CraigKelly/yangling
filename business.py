@@ -10,41 +10,6 @@ import csv
 
 import common
 
-# TODO
-"""
-LEFT TO DO:
-{
-  "attributes": {
-    "Good For": {
-      "dessert": false,
-      "latenight": false,
-      "lunch": false,
-      "dinner": false,
-      "brunch": false,
-      "breakfast": false
-    },
-    "Ambience": {
-      "romantic": false,
-      "intimate": false,
-      "classy": false,
-      "hipster": false,
-      "divey": false,
-      "touristy": false,
-      "trendy": false,
-      "upscale": false,
-      "casual": false
-    },
-    "Parking": {
-      "garage": false,
-      "street": false,
-      "validated": false,
-      "lot": false,
-      "valet": false
-    },
-  },
-}
-"""
-
 xlator = common.xlator(
     columns=[
         "business_id",
@@ -75,6 +40,26 @@ xlator = common.xlator(
         "GoodForKids",
         "GoodForGroups",
         "PriceRange",
+        "GoodForDessert",
+        "GoodForLateNight",
+        "GoodForLunch",
+        "GoodForDinner",
+        "GoodForBrunch",
+        "GoodForBreakfast",
+        "AmbienceRomantic",
+        "AmbienceIntimate",
+        "AmbienceClassy",
+        "AmbienceHipster",
+        "AmbienceDivey",
+        "AmbienceTouristy",
+        "AmbienceTrendy",
+        "AmbienceUpscale",
+        "AmbienceCasual",
+        "ParkingGarage",
+        "ParkingStreet",
+        "ParkingValidated",
+        "ParkingLot",
+        "ParkingValet",
     ],
     colmap={
         "TakeOut": "attributes.Take-out",
@@ -92,6 +77,26 @@ xlator = common.xlator(
         "GoodForKids": "attributes.Good for Kids",
         "GoodForGroups": "attributes.Good For Groups",
         "PriceRange": "attributes.Price Range",
+        "GoodForDessert": "attributes.Good For.dessert",
+        "GoodForLateNight": "attributes.Good For.latenight",
+        "GoodForLunch": "attributes.Good For.lunch",
+        "GoodForDinner": "attributes.Good For.dinner",
+        "GoodForBrunch": "attributes.Good For.brunch",
+        "GoodForBreakfast": "attributes.Good For.breakfast",
+        "AmbienceRomantic": "attributes.Ambience.romantic",
+        "AmbienceIntimate": "attributes.Ambience.intimate",
+        "AmbienceClassy": "attributes.Ambience.classy",
+        "AmbienceHipster": "attributes.Ambience.hipster",
+        "AmbienceDivey": "attributes.Ambience.divey",
+        "AmbienceTouristy": "attributes.Ambience.touristy",
+        "AmbienceTrendy": "attributes.Ambience.trendy",
+        "AmbienceUpscale": "attributes.Ambience.upscale",
+        "AmbienceCasual": "attributes.Ambience.casual",
+        "ParkingGarage": "attributes.Parking.garage",
+        "ParkingStreet": "attributes.Parking.street",
+        "ParkingValidated": "attributes.Parking.validated",
+        "ParkingLot": "attributes.Parking.lot",
+        "ParkingValet": "attributes.Parking.valet",
     }
 )
 

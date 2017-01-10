@@ -1,7 +1,7 @@
 all: business.csv reviews.csv
 
 clean:
-	rm -f business.csv
+	rm -f business.csv reviews.csv
 
 business.csv : business.py common.py yelp_academic_dataset_business.json
 	./business.py < yelp_academic_dataset_business.json > business.csv
