@@ -3,3 +3,4 @@ __pycache__/
 *.tum
 *.json
 *.csv
+report.txt

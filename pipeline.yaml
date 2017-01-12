@@ -1,0 +1,25 @@
+business:
+    command: ./business.py < yelp_academic_dataset_business.json > business.csv || rm business.csv
+    inputs:
+        - business.py
+        - common.py
+        - yelp_academic_dataset_business.json
+    outputs:
+        - business.csv
+
+review:
+    command: ./review.py < yelp_academic_dataset_review.json > review.csv  || rm review.csv
+    inputs:
+        - review.py
+        - common.py
+        - yelp_academic_dataset_review.json
+    outputs:
+        - review.csv
+
+report:
+    command: wc *.csv | tee report.txt
+    inputs:
+        - business.csv
+        - review.csv
+    outputs:
+        - report.txt
