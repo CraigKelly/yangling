@@ -19,7 +19,6 @@ review:
 report:
     command: wc *.csv | tee report.txt
     inputs:
-        - business.csv
-        - review.csv
+        - "*.csv"
     outputs:
         - report.txt
