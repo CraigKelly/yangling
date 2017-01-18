@@ -1,14 +1,25 @@
+# required setup
+setup:
+    command: ./bootstrap/setup
+    inputs:
+        - bootstrap/setup
+    outputs:
+        - bootstrap/.complete
+
+# business-only file
 business:
-    command: ./business.py < yelp_academic_dataset_business.json > business.csv || rm business.csv
+    command: ./business.py < yelp_academic_dataset_business.json > business.csv || rm -f business.csv
     inputs:
         - business.py
         - common.py
+        - locate.py
         - yelp_academic_dataset_business.json
     outputs:
         - business.csv
 
+# review-only file (has business and user ID's)
 review:
-    command: ./review.py < yelp_academic_dataset_review.json > review.csv  || rm review.csv
+    command: ./review.py < yelp_academic_dataset_review.json > review.csv || rm -f review.csv
     inputs:
         - review.py
         - common.py
@@ -16,9 +27,30 @@ review:
     outputs:
         - review.csv
 
-report:
-    command: wc *.csv | tee report.txt
+# business csv with only 4 cities
+fourcities:
+    command: textql -header -output-header -sql 'select * where norm_city in ("Pittsburgh", "Charlotte", "Phoenix", "Las Vegas")' business.csv  > business_4city.csv
     inputs:
-        - "*.csv"
+        - bootstrap/.complete  # texsql installed by setup
+        - business.csv
     outputs:
-        - report.txt
+        - business_4city.csv
+
+# reviews since 2014
+recentreview:
+    command: ./revyear.py 2014 < review.csv > review2014.csv || rm -f review2014.csv
+    inputs:
+        - revyear.py
+        - review.csv
+    outputs:
+        - review2014.csv
+
+# join biz and reviews together
+joined:
+    command: ./join_biz_rev.py -b business_4city.csv -r review2014.csv > review_final.csv || rm -f review_final.csv
+    inputs:
+        - join_biz_rev.py
+        - business_4city.csv
+        - review2014.csv
+    outputs:
+        - review_final.csv

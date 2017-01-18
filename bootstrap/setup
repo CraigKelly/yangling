@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+COMPLETED="$SCRIPT_DIR/.complete"
+
+# Just in case we fail
+rm -f "$COMPLETED"
+
+echo "Getting textql"
+go get -u github.com/dinedal/textql/...
+
+echo "Marking complete"
+touch "$COMPLETED"

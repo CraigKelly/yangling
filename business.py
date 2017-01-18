@@ -9,6 +9,7 @@ import json
 import csv
 
 import common
+import locate
 
 xlator = common.xlator(
     columns=[
@@ -21,6 +22,8 @@ xlator = common.xlator(
         "categories",  # list
         "full_address",
         "city",
+        "norm_city",
+        "norm_dist",
         "state",
         "longitude",
         "latitude",
@@ -117,6 +120,10 @@ def main():
         if not rec:
             continue
         read += 1
+
+        # Add any special fields we want to add
+        rec["norm_dist"], rec["norm_city"] = locate.closest(rec["latitude"], rec["longitude"])
+
         if filt(rec):
             outp.writerow(xlator.xlate(rec))
             written += 1
