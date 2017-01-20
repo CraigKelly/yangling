@@ -1,6 +1,7 @@
 # required setup
 setup:
     command: ./bootstrap/setup
+    delOnFail: true
     inputs:
         - bootstrap/setup
     outputs:
