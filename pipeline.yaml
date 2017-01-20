@@ -8,7 +8,8 @@ setup:
 
 # business-only file
 business:
-    command: ./business.py < yelp_academic_dataset_business.json > business.csv || rm -f business.csv
+    command: ./business.py < yelp_academic_dataset_business.json > business.csv
+    delOnFail: true
     inputs:
         - business.py
         - common.py
@@ -19,7 +20,8 @@ business:
 
 # review-only file (has business and user ID's)
 review:
-    command: ./review.py < yelp_academic_dataset_review.json > review.csv || rm -f review.csv
+    command: ./review.py < yelp_academic_dataset_review.json > review.csv
+    delOnFail: true
     inputs:
         - review.py
         - common.py
@@ -30,6 +32,7 @@ review:
 # business csv with only 4 cities
 fourcities:
     command: textql -header -output-header -sql 'select * where norm_city in ("Pittsburgh", "Charlotte", "Phoenix", "Las Vegas")' business.csv  > business_4city.csv
+    delOnFail: true
     inputs:
         - bootstrap/.complete  # texsql installed by setup
         - business.csv
@@ -38,7 +41,8 @@ fourcities:
 
 # reviews since 2014
 recentreview:
-    command: ./revyear.py 2014 < review.csv > review2014.csv || rm -f review2014.csv
+    command: ./revyear.py 2014 < review.csv > review2014.csv
+    delOnFail: true
     inputs:
         - revyear.py
         - review.csv
@@ -47,7 +51,8 @@ recentreview:
 
 # join biz and reviews together
 joined:
-    command: ./join_biz_rev.py -b business_4city.csv -r review2014.csv > review_final.csv || rm -f review_final.csv
+    command: ./join_biz_rev.py -b business_4city.csv -r review2014.csv > review_final.csv
+    delOnFail: true
     inputs:
         - join_biz_rev.py
         - business_4city.csv
