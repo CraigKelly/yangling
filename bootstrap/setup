@@ -8,6 +8,9 @@ COMPLETED="$SCRIPT_DIR/.complete"
 # Just in case we fail
 rm -f "$COMPLETED"
 
+echo "Insuring unidecode available"
+python3 -c "import unidecode" || pip3 install --user unidecode
+
 echo "Getting textql"
 go get -u github.com/dinedal/textql/...
 
