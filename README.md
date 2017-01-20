@@ -24,3 +24,8 @@ You can install unidecode locallly: `pip3 install --user unidecode`
 Once you have everything working, just running `dmk` should be sufficient. The
 scripts assume that you've extracted the yelp academic dataset to this
 directory.
+
+## Licensing
+
+_Code_ in this repository is licensed under the MIT license (see `LICENSE`).
+
